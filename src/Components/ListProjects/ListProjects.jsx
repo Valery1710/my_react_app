@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom"
 import styles from './ListProjects.module.css';
 import ProjectCard from '../ProjectCard/ProjectCard';
 import Menu from '../Menu/Menu';
@@ -7,14 +8,9 @@ import projectsStore from '../../store/ProjectsStore';
 const ListProjects = () => {
   const [projects, setProjects] = useState([]);
 
-  // useEffect(() => {
-  //   fetch('http://localhost:8080/projects')
-  //     .then((res) => res.json())
-  //     .then((data) => setProjects(data))
-  //     .catch((err) => console.error('Error fetching projects:', err));
-  // }, []);
 
-  
+
+
   projects.map((el) => {
     projectsStore.addItem(el);
   });
@@ -22,8 +18,7 @@ const ListProjects = () => {
   const projectsArr = projectsStore.items;
 
   console.log('projectsArr', projectsArr.length);
-  // const activeProjects = projectsArr.filter(p => !p.isCompleted);
-  // const passedProjects = projectsArr.filter(p => p.isCompleted);
+
   const activeProjects = projectsArr.filter((p) => !p.isCompleted);
   const passedProjects = projectsArr.filter((p) => p.isCompleted);
 
@@ -34,7 +29,9 @@ const ListProjects = () => {
       <main className={styles.mainContent}>
         <div className={styles.header}>
           <h2>Active projects MainPage</h2>
+          <Link to="/createproject">
           <button className={styles.createBtn}>Create project</button>
+          </Link>
         </div>
         <div className={styles.projectList}>
           {activeProjects.map((project) => (

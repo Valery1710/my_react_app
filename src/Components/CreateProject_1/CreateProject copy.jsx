@@ -48,9 +48,7 @@ const CreateProject = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('click form button');
-    console.log(formData); // Выводим объект в консоль
-    // updateProject(2, { name: 'Updated Project Name' });
-    // createProject({ name: 'New Project' });
+    console.log(formData); 
     
     createProject(formData);
     
@@ -75,6 +73,7 @@ const CreateProject = () => {
                 placeholder="Project name"
                 value={formData.name}
                 onChange={handleChange}
+                required
               />
             </div>
             <div className={styles.field}>
@@ -82,6 +81,7 @@ const CreateProject = () => {
               <select
                 name="field"
                 value={formData.field}
+                
                 onChange={handleChange}
               >
                 <option value="">Select field</option>
@@ -100,6 +100,7 @@ const CreateProject = () => {
                 name="experience"
                 placeholder="Required experience"
                 value={formData.experience}
+                
                 onChange={handleChange}
               />
             </div>
@@ -109,6 +110,7 @@ const CreateProject = () => {
                 type="date"
                 name="deadline"
                 value={formData.deadline}
+                
                 onChange={handleChange}
               />
             </div>
@@ -121,9 +123,15 @@ const CreateProject = () => {
               rows="5"
               placeholder="Describe the project..."
               value={formData.description}
+           
               onChange={handleChange}
             />
           </div>
+                   
+
+          
+
+
           <Link to="/">
             <button  className={styles.submitButton} onClick={handleSubmit}>
             {/* <button type="submit" className={styles.submitButton} onClick={handleSubmit}> */}

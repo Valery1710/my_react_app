@@ -124,15 +124,11 @@ const CreateProject = () => {
               onChange={handleChange}
             />
           </div>
-
-          {/* <label for="subscribe">Completed</label>
-          <input type="checkbox" id="subscribe" name="subscribe" value={formData.isCompleted}></input> */}
-
-          {/* <Link to="/"> */}
-            <button type="submit" className={styles.submitButton}>
-              Create project
+         
+            <button type="submit" className={styles.submitButton} onClick={handleSubmit} >
+            <Link to='/'>Create project </Link>
             </button>
-          {/* </Link> */}
+         
         </form>
         {/* <Link to="/"> */}
             {/* <button type="submit" className={handleOnClick}>

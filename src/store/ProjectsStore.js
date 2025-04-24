@@ -11,7 +11,7 @@ class ProjectsStore {
     console.log('addItem')
     this.items = JSON.parse(localStorage.getItem('projectStore')) ? JSON.parse(localStorage.getItem('projectStore')) : [];
     if (!this.items.some((el) => el.id === item.id)) {
-      const newProject = { id: Date.now(), ...item};
+      const newProject = { id: Date.now(), isCompleted:false,...item};
       this.items.push(newProject);
       localStorage.setItem('projectStore', JSON.stringify(this.items));
     }

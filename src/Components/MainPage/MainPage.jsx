@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 import styles from './MainPage.module.css';
 import ProjectCard from '../ProjectCard/ProjectCard';
 import Menu from '../Menu/Menu';
@@ -32,7 +33,9 @@ const MainPage = () => {
       <main className={styles.mainContent}>
         <div className={styles.header}>
           <h2>Active projects MainPage</h2>
+          <Link to="/createproject"></Link>
           <button className={styles.createBtn}>Create project</button>
+          </Link>
         </div>
         <div className={styles.projectList}>
           {activeProjects.map(project => (

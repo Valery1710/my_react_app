@@ -8,10 +8,10 @@ function Menu() {
     <h2 className={styles.logo}>TROOD COMMUNITY</h2>
     <nav className={styles.nav}>
     <Link to="/">
-      <button>Main Page</button>
+      <button className={styles.color}>Main Page</button>
       </Link>
       <Link to="/createproject">
-      <button className={styles.active}>CreateProject</button>
+      <button >Projects</button>
       </Link>
       <button>Vacancies</button>
       <button>People</button>
