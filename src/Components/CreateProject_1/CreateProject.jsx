@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './CreateProject.module.css';
 import Menu from '../Menu/Menu';
+import projectsStore from '../../store/ProjectsStore';
 const CreateProject = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -47,7 +48,8 @@ const CreateProject = () => {
     e.preventDefault();
     console.log('click form button');
     console.log(formData); // Выводим объект в консоль
-    createProject(formData);
+    // createProject(formData); // POST to backend
+    projectsStore.addItem(formData)
     };
 
   const handleOnClick =()=>{

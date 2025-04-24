@@ -7,13 +7,14 @@ import projectsStore from '../../store/ProjectsStore';
 const ListProjects = () => {
   const [projects, setProjects] = useState([]);
 
-  useEffect(() => {
-    fetch('http://localhost:8080/projects')
-      .then((res) => res.json())
-      .then((data) => setProjects(data))
-      .catch((err) => console.error('Error fetching projects:', err));
-  }, []);
+  // useEffect(() => {
+  //   fetch('http://localhost:8080/projects')
+  //     .then((res) => res.json())
+  //     .then((data) => setProjects(data))
+  //     .catch((err) => console.error('Error fetching projects:', err));
+  // }, []);
 
+  
   projects.map((el) => {
     projectsStore.addItem(el);
   });

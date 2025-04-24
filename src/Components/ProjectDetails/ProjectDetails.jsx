@@ -32,33 +32,7 @@ console.log('projectsStore.items',projectsStore.items)
     console.log('Проект удалён!');
     projectsStore.removeItem(projectSelected.item)
 
-    // Удаление из бэкенда
-    async function deleteProject(id) {
-      try {
-          const response = await fetch(`http://localhost:8080/projects/${projectSelected.item}`, {
-              method: 'DELETE', // Указываем метод DELETE
-              headers: {
-                  'Content-Type': 'application/json' // Указываем тип контента
-              }
-          });
-  
-          if (!response.ok) {
-              throw new Error(`Ошибка при удалении проекта: ${response.statusText}`);
-          }
-  
-          console.log(`Проект с ID ${id} успешно удален.`);
-      } catch (error) {
-          console.error('Ошибка:', error);
-      }
-  }
-  
-  // Пример вызова функции
-  deleteProject(2); // Замените 2 на ID проекта, который нужно удалить
-
-
-
-
-    
+        
   };
 
   return (
