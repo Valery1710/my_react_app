@@ -7,12 +7,12 @@ function Menu() {
     <aside className={styles.sidebar}>
     <h2 className={styles.logo}>TROOD COMMUNITY</h2>
     <nav className={styles.nav}>
-    <Link to="/">
+    {/* <Link to="/"> */}
       <button>Main Page</button>
-      </Link>
-      <Link to="/createproject">
+      {/* </Link> */}
+      {/* <Link to="/createproject"> */}
       <button className={styles.active}>CreateProject</button>
-      </Link>
+      {/* </Link> */}
       <button>Vacancies</button>
       <button>People</button>
       <button>Settings</button>

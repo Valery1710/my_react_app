@@ -13,6 +13,7 @@ const CreateProject = () => {
 
   //Sent data from Form to backend
   const createProject = async (projectData) => {
+    console.log('POST new project to backend')
     try {
       const response = await fetch('http://localhost:8080/projects', {
         method: 'POST',
@@ -20,6 +21,7 @@ const CreateProject = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(projectData),
+       
       });
 
       if (!response.ok) {
@@ -47,12 +49,12 @@ const CreateProject = () => {
     e.preventDefault();
     console.log('click form button');
     console.log(formData); // Выводим объект в консоль
+    // updateProject(2, { name: 'Updated Project Name' });
+    // createProject({ name: 'New Project' });
+    
     createProject(formData);
-    };
-
-  const handleOnClick =()=>{
-    createProject(formData);
-  }  
+    
+  };
 
   return (
     <div className={styles.container}>
@@ -62,7 +64,8 @@ const CreateProject = () => {
       <main className={styles.main}>
         <h2 className={styles.title}>Creating project</h2>
 
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form} >
+        {/* <form className={styles.form} onSubmit={handleSubmit}> */}
           <div className={styles.row}>
             <div className={styles.field}>
               <label>Name</label>
@@ -109,7 +112,6 @@ const CreateProject = () => {
                 onChange={handleChange}
               />
             </div>
-           
           </div>
 
           <div className={styles.field}>
@@ -122,21 +124,13 @@ const CreateProject = () => {
               onChange={handleChange}
             />
           </div>
-
-          {/* <label for="subscribe">Completed</label>
-          <input type="checkbox" id="subscribe" name="subscribe" value={formData.isCompleted}></input> */}
-
-          {/* <Link to="/"> */}
-            <button type="submit" className={styles.submitButton}>
+          <Link to="/">
+            <button  className={styles.submitButton} onClick={handleSubmit}>
+            {/* <button type="submit" className={styles.submitButton} onClick={handleSubmit}> */}
               Create project
             </button>
-          {/* </Link> */}
+          </Link>
         </form>
-        {/* <Link to="/"> */}
-            {/* <button type="submit" className={handleOnClick}>
-              Create project
-            </button> */}
-          {/* </Link> */}
       </main>
     </div>
   );
