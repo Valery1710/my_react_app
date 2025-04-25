@@ -13,23 +13,15 @@ const ProjectDetails = ({id}) => {
   const [description, setDescription] = useState(
     "We are looking for a creative and detail-oriented designer to develop eye-catching and engaging visual materials for our social media platforms. The goal is to create content that aligns with our brand identity and effectively captures our audience's attention."
   );
-  const projectForDisplay = projectsStore.items.filter(el=>el.id === projectSelected.item)
-  // Внимание в projectForDisplay - Array с одним элементом - объектом с данными выбранного проекта
-    const [formData, setFormData] = useState(projectForDisplay[0]);
-    console.log('formData',formData)
-  // const projectForDisplay = projectsStore.items.filter(el=>el.id === projectSelected.item)
-  //   const [formData, setFormData] = useState({
-  //     name: '',
-  //     field: '',
-  //     experience: '',
-  //     deadline: '',
-  //     description: '',
-  //     isCompleted:false
-  //   });
+  // const [field, setField] = useState('Design');
+  // const [experience, setExperience] = useState('More 2 years');
+  // const [deadline, setDeadline] = useState('2024-11-22');
+  // const [description, setDescription] = useState(
+  //   "We are looking for a creative and detail-oriented designer to develop eye-catching and engaging visual materials for our social media platforms. The goal is to create content that aligns with our brand identity and effectively captures our audience's attention."
+  // );
 
-
-
-
+const projectForDisplay = projectsStore.items.filter(el=>el.id === projectSelected.item)
+// Внимание в projectForDisplay - Array с одним элементом - объектом с данными выбранного проекта
 console.log('projectsStore.items',projectsStore.items)
   console.log('projectForDisplay',projectForDisplay)
   const handleAddVacancy = () => {
@@ -42,25 +34,6 @@ console.log('projectsStore.items',projectsStore.items)
 
         
   };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('click form button');
-    console.log(formData); // Выводим объект в консоль
-    // createProject(formData); // POST to backend
-    projectsStore.updateItem(formData)
-    // projectsStore.addItem(formData)
-    };
 
   return (
     <div className={styles.container}>
@@ -77,11 +50,11 @@ console.log('projectsStore.items',projectsStore.items)
           </Link>
         </div>
 
-        <form className={styles.form}>
+        <div className={styles.form}>
           <div className={styles.row}>
             <div className={styles.inputGroup}>
               <label>Field</label>
-              <select value={field} onChange={handleChange}>
+              <select value={field} onChange={(e) => setField(e.target.value)}>
                 <option>{projectForDisplay[0].field} </option>
                 <option>Development</option>
                 <option>Marketing</option>
@@ -114,13 +87,11 @@ console.log('projectsStore.items',projectsStore.items)
               onChange={(e) => setDescription(e.target.value)}
             />
           </div>
-          <button type="submit" className={styles.submitButton} onClick={handleSubmit} >
-            <Link to='/'>Update project </Link>
-            </button>
+
           <button className={styles.addBtn} onClick={handleAddVacancy}>
             Add vacancy
           </button>
-        </form>
+        </div>
       </main>
     </div>
   );

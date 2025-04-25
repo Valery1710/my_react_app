@@ -9,6 +9,7 @@ class ProjectSelected {
   }
 
   addItem(id) {
+    console.log('ProjectSelected.addItem')
     console.log('item',id)
     this.item = id;
     

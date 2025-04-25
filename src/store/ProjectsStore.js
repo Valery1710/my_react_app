@@ -1,8 +1,8 @@
 import { makeAutoObservable } from 'mobx';
 
 class ProjectsStore {
-  items = []; //массив объектов в каждом объекте одтельный проект
-
+   //массив объектов в каждом объекте одтельный проект
+  items = JSON.parse(localStorage.getItem('projectStore')) ? JSON.parse(localStorage.getItem('projectStore')) : [];
   constructor() {
     makeAutoObservable(this);
   }
@@ -23,6 +23,11 @@ class ProjectsStore {
     this.items = JSON.parse(localStorage.getItem('projectStore'));
     this.items = this.items.filter((item) => item.id !== id);
     localStorage.setItem('projectStore', JSON.stringify(this.items));
+  }
+
+  updateItem(item) {
+    this.removeItem(item.id)
+    this.addItem(item)
   }
 
   get totalPrice() {

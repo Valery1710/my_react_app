@@ -98,12 +98,3 @@
     cursor: pointer;
   }
   
-  .submitButton {
-    margin-top: 20px;
-    background: #e0e0e0;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 20px;
-    font-weight: bold;
-    cursor: pointer;
-  }

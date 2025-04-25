@@ -6,14 +6,14 @@ import Menu from '../Menu/Menu';
 import projectsStore from '../../store/ProjectsStore';
 
 const ListProjects = () => {
-  const [projects, setProjects] = useState([]);
+  // const [projects, setProjects] = useState([projectsStore.items]);
 
 
 
 
-  projects.map((el) => {
-    projectsStore.addItem(el);
-  });
+  // projects.map((el) => {
+  //   projectsStore.addItem(el);
+  // });
 
   const projectsArr = projectsStore.items;
 
