@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom"
 import styles from './ListProjects.module.css';
 import ProjectCard from '../ProjectCard/ProjectCard';
+// import ProjectCard from '../ProjectCard/ProjectCard_1';
 import Menu from '../Menu/Menu';
 import projectsStore from '../../store/ProjectsStore';
+import MyComponent from '../MyComponent/MyComponent';
 
 const ListProjects = () => {
   // const [projects, setProjects] = useState([projectsStore.items]);
@@ -40,6 +42,8 @@ const ListProjects = () => {
               title={project.name}
               id={project.id}
               field={project.field}
+              deadline={project.deadline}
+              isCompleted={project.isCompleted}
               tasks={project.description || ['Sample task 1', 'Sample task 2']}
             />
           ))}
@@ -48,6 +52,7 @@ const ListProjects = () => {
         <h2 className={styles.sectionTitle}>Passed projects</h2>
         <div className={styles.projectList}>
           {passedProjects.map((project) => (
+            
             <ProjectCard
               key={project.id}
               title={project.name}

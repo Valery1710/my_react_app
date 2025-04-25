@@ -55,10 +55,10 @@ console.log('projectsStore.items',projectsStore.items)
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('click form button');
+    console.log('click Update button');
     console.log(formData); // Выводим объект в консоль
     // createProject(formData); // POST to backend
-    projectsStore.updateItem(formData)
+    projectsStore.updateItem({...formData,name:"test"})
     // projectsStore.addItem(formData)
     };
 
@@ -69,7 +69,7 @@ console.log('projectsStore.items',projectsStore.items)
 
       <main className={styles.main}>
         <div className={styles.header}>
-          <h1>{projectForDisplay[0].name}</h1>
+          <h1>{formData.name}</h1>
           <Link to='/'>
           <button className={styles.deleteBtn} onClick={handleDeleteProject}>
             Delete project
@@ -81,8 +81,9 @@ console.log('projectsStore.items',projectsStore.items)
           <div className={styles.row}>
             <div className={styles.inputGroup}>
               <label>Field</label>
-              <select value={field} onChange={handleChange}>
-                <option>{projectForDisplay[0].field} </option>
+              <select value={projectForDisplay[0].field} 
+              onChange={(e) => setFormData({...formData, field: e.target.value})}>
+                <option>Design </option>
                 <option>Development</option>
                 <option>Marketing</option>
               </select>
@@ -92,8 +93,9 @@ console.log('projectsStore.items',projectsStore.items)
               <label>Experience</label>
               <input
                 type="text"
-                value={projectForDisplay[0].experience}
-                onChange={(e) => setExperience(e.target.value)}
+                value={formData.experience}
+                // onChange={(e) => setExperience(e.target.value)}
+                onChange={(e) => setFormData({...formData, experience: e.target.value})}
               />
             </div>
 
@@ -101,8 +103,8 @@ console.log('projectsStore.items',projectsStore.items)
               <label>Deadline</label>
               <input
                 type="date"
-                value={projectForDisplay[0].deadline}
-                onChange={(e) => setDeadline(e.target.value)}
+                value={formData.deadline}
+                onChange={(e) => setFormData({...formData, deadline: e.target.value})}
               />
             </div>
           </div>
@@ -110,8 +112,8 @@ console.log('projectsStore.items',projectsStore.items)
           <div className={styles.inputGroup}>
             <label>Description</label>
             <textarea
-              value={projectForDisplay[0].description}
-              onChange={(e) => setDescription(e.target.value)}
+              value={formData.description}
+              onChange={(e) => setFormData({...formData, description: e.target.value})}
             />
           </div>
           <button type="submit" className={styles.submitButton} onClick={handleSubmit} >

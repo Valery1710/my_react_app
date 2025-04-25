@@ -11,6 +11,8 @@ const CreateProject = () => {
     deadline: '',
     description: '',
   });
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   //Sent data from Form to backend
   const createProject = async (projectData) => {
@@ -36,25 +38,46 @@ const CreateProject = () => {
   //**Sent data from Form to backend
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    console.log('e.name',e.target.name)
+    if (!formData.name && e.target.name !== "name") {
+      showPopup('First fill in the project Name field');
+    } else {
+      const { name, value } = e.target;
 
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+  };
+
+  const showPopup = (message) => {
+    setIsPopupVisible(true);
+
+    setErrorMessage(message);
+    console.log('Start popup');
+    setTimeout(() => {
+      setIsPopupVisible(false);
+      console.log('Stop popup');
+    }, 3000); // Скрыть попап через 2 секунды
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('click form button');
-    console.log(formData); // Выводим объект в консоль
-    // createProject(formData); // POST to backend
-    projectsStore.addItem(formData)
-    };
+    console.log('formData.name', formData.name);
+    if (!formData.name) {
+      console.log('Project name required!!!');
+    } else {
+      console.log('click form button');
+      console.log(formData); // Выводим объект в консоль
+      // createProject(formData); // POST to backend
+      projectsStore.addItem(formData);
+    }
+  };
 
-  const handleOnClick =()=>{
+  const handleOnClick = () => {
     createProject(formData);
-  }  
+  };
 
   return (
     <div className={styles.container}>
@@ -111,7 +134,6 @@ const CreateProject = () => {
                 onChange={handleChange}
               />
             </div>
-           
           </div>
 
           <div className={styles.field}>
@@ -124,18 +146,23 @@ const CreateProject = () => {
               onChange={handleChange}
             />
           </div>
-         
-            <button type="submit" className={styles.submitButton} onClick={handleSubmit} >
-            <Link to='/'>Create project </Link>
-            </button>
-         
+
+          <button
+            type="submit"
+            className={styles.submitButton}
+            onClick={handleSubmit}
+          >
+            <Link to="/">Create project </Link>
+          </button>
         </form>
         {/* <Link to="/"> */}
-            {/* <button type="submit" className={handleOnClick}>
+        {/* <button type="submit" className={handleOnClick}>
               Create project
             </button> */}
-          {/* </Link> */}
+        {/* </Link> */}
       </main>
+
+      {isPopupVisible && <div className={styles.popup}>{errorMessage}</div>}
     </div>
   );
 };

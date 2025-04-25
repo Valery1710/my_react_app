@@ -10,7 +10,7 @@ import ProjectDetails from './Components/ProjectDetails/ProjectDetails';
 function App() {
   return (
     <div>
-      Task_1 my-app
+      Task_1 my-app 1
       {/* <MainPage/> */}
       {/* <CreateProject/> */}
       {/* <ProjectDetails/> */}
