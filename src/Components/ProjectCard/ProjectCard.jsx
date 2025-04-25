@@ -17,7 +17,7 @@ const ProjectCard = ({ id,title, tasks, field,dedline }) => (
     <h3>Name: {title}</h3>
     <p>Id: {id}</p>
     <p>Field: {field}</p>
-    <p>Dedline: {dedline}</p>
+    <p>Deadline: {dedline}</p>
     <p>Description: {getFormattedText(tasks)}</p>
     
     </Link>
