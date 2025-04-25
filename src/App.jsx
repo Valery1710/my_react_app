@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import ListProjects from './Components/ListProjects/ListProjects';
 import CreateProject from './Components/CreateProject_1/CreateProject';
 
@@ -14,7 +15,7 @@ function App() {
       {/* <CreateProject/> */}
       {/* <ProjectDetails/> */}
       {/* <UpdateProject/> */}
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route path="/" element={<ListProjects />} />
           <Route path="/createproject" element={<CreateProject />} />
@@ -23,7 +24,7 @@ function App() {
           <Route path="*" element={<ListProjects />} />
           {/* <Route /> */}
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
