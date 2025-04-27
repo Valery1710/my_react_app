@@ -10,11 +10,8 @@ import ProjectDetails from './Components/ProjectDetails/ProjectDetails';
 function App() {
   return (
     <div>
-      Task_1 my-app 1
-      {/* <MainPage/> */}
-      {/* <CreateProject/> */}
-      {/* <ProjectDetails/> */}
-      {/* <UpdateProject/> */}
+      Task_1 my-app 2
+
       <HashRouter>
         <Routes>
           <Route path="/" element={<ListProjects />} />
