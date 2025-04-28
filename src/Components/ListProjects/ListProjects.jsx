@@ -6,6 +6,17 @@ import ProjectCard from '../ProjectCard/ProjectCard';
 import Menu from '../Menu/Menu';
 import projectsStore from '../../store/ProjectsStore';
 import MyComponent from '../MyComponent/MyComponent';
+
+const isDateInThePast = (dateString) => {
+  if (!dateString) return false; // Если дата не выбрана, возвращаем false
+  const selectedDate = new Date(dateString);
+  const currentDate = new Date();
+  
+  // Устанавливаем время текущей даты на полночь для корректного сравнения
+  currentDate.setHours(0, 0, 0, 0);
+  
+  return selectedDate < currentDate; // Сравниваем даты
+};
 import img from '../../Imgs/Menu.png';
 const isDateInThePast = (dateString) => {
   if (!dateString) return false; // Если дата не выбрана, возвращаем false
@@ -29,13 +40,8 @@ const ListProjects = () => {
 
   console.log('projectsArr', projectsArr.length);
 
-  const activeProjects = projectsArr.filter(
-    (p) => !isDateInThePast(p.deadline)
-  );
-  const passedProjects = projectsArr.filter((p) => isDateInThePast(p.deadline));
-
-  // const activeProjects = projectsArr.filter((p) => !p.isCompleted);
-  // const passedProjects = projectsArr.filter((p) => p.isCompleted);
+  const activeProjects = projectsArr.filter((p) => !p.isCompleted);
+  const passedProjects = projectsArr.filter((p) => p.isCompleted);
 
   return (
 <>
@@ -72,10 +78,8 @@ const ListProjects = () => {
               key={project.id}
               title={project.name}
               id={project.id}
-              field={project.field}
-              deadline={project.deadline}
-              isCompleted={project.isCompleted}
-              tasks={project.description || ['Sample task 1', 'Sample task 2']}
+              // tasks={project.description || ['Sample task 1', 'Sample task 2']}
+              tasks={project.description} // || ['Sample task 1', 'Sample task 2']}
             />
           ))}
         </div>

@@ -13,8 +13,7 @@ const getFormattedText = (input) => {
 }
 
 const ProjectCard = ({ id,title, tasks, field, deadline }) => (
-  <div className={styles.projectCard} onClick={() => db.addProjectSelectedId(id)}>
-  {/* <div className={styles.projectCard} onClick={() => projectSelected.addItem(id)}> */}
+  <div className={styles.projectCard} onClick={() => projectSelected.addItem(id)}>
     <Link to="/projectdetails" >
     <h3>Name: {title}</h3>
     
