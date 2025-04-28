@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './ListProjects.module.css';
-import ProjectCard from '../ProjectCard/ProjectCard';
-// import ProjectCard from '../ProjectCard/ProjectCard_1';
-import Menu from '../Menu/Menu';
-import projectsStore from '../../store/ProjectsStore';
-import MyComponent from '../MyComponent/MyComponent';
-import img from '../../Imgs/Menu.png';
+import styles from './ListVacUnderProject.module.css';
+import VacancyCard from '../VacancyCard/VacancyCard';
+
+import VacUnderPr from '../VacUnderPr/VacUnderPr';
+import db from '../../store/Db';
+
+
 const isDateInThePast = (dateString) => {
   if (!dateString) return false; // Если дата не выбрана, возвращаем false
   const selectedDate = new Date(dateString);
@@ -18,14 +18,15 @@ const isDateInThePast = (dateString) => {
   return selectedDate < currentDate; // Сравниваем даты
 };
 
-const ListProjects = () => {
+const ListVacanciesForProject = () => {
   // const [projects, setProjects] = useState([projectsStore.items]);
 
   // projects.map((el) => {
   //   projectsStore.addItem(el);
   // });
 
-  const projectsArr = projectsStore.items;
+  // const projectsArr = vacancyStore.items;
+  const projectsArr = db.vacancies;
 
   console.log('projectsArr', projectsArr.length);
 
@@ -38,22 +39,19 @@ const ListProjects = () => {
   // const passedProjects = projectsArr.filter((p) => p.isCompleted);
 
   return (
-<>
-
     <div className={styles.container}>
-
-      <Menu />
+     
 
       <main className={styles.mainContent}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Active projects</h2>
-          <Link to="/createproject" className={styles.btn_link}>
-            <button className={styles.createBtn}>Create project</button>
+          <h2>Vacantions</h2>
+          <Link to="/createvacancy">
+            <button className={styles.createBtn}>Create vacation</button>
           </Link>
         </div>
         <div className={styles.projectList}>
           {activeProjects.map((project) => (
-            <ProjectCard
+            <VacUnderPr
               key={project.id}
               title={project.name}
               id={project.id}
@@ -65,10 +63,10 @@ const ListProjects = () => {
           ))}
         </div>
 
-        <h2 className={styles.title}>Passed projects</h2>
+        <h2 className={styles.sectionTitle}>Passed projects</h2>
         <div className={styles.projectList}>
           {passedProjects.map((project) => (
-            <ProjectCard
+            <VacancyCard
               key={project.id}
               title={project.name}
               id={project.id}
@@ -81,8 +79,7 @@ const ListProjects = () => {
         </div>
       </main>
     </div>
-    </>
   );
 };
 
-export default ListProjects;
+export default ListVacanciesForProject;

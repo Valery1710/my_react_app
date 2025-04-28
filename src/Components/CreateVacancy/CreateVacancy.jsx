@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './CreateProject.module.css';
 import Menu from '../Menu/Menu';
-import projectsStore from '../../store/ProjectsStore';
-const CreateProject = () => {
+import vacancyStore from '../../store/Db';
+import db from '../../store/Db';
+
+const CreateVacancy = () => {
   const [formData, setFormData] = useState({
     name: '',
     field: '',
@@ -14,33 +16,33 @@ const CreateProject = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
-  //Sent data from Form to backend
-  const createProject = async (projectData) => {
-    try {
-      const response = await fetch('http://localhost:8080/projects', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(projectData),
-      });
+  // //Sent data from Form to backend
+  // const createVacancy = async (projectData) => {
+  //   try {
+  //     const response = await fetch('http://localhost:8080/vacancies', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(projectData),
+  //     });
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
+  //     if (!response.ok) {
+  //       throw new Error('Network response was not ok');
+  //     }
 
-      const data = await response.json();
-      console.log('Created project:', data);
-    } catch (error) {
-      console.error('Error creating project:', error);
-    }
-  };
-  //**Sent data from Form to backend
+  //     const data = await response.json();
+  //     console.log('Created project:', data);
+  //   } catch (error) {
+  //     console.error('Error creating project:', error);
+  //   }
+  // };
+  // //**Sent data from Form to backend
 
   const handleChange = (e) => {
-    console.log('e.name',e.target.name)
-    if (!formData.name && e.target.name !== "name") {
-      showPopup('First fill in the project Name field');
+    console.log('e.name', e.target.name);
+    if (!formData.name && e.target.name !== 'name') {
+      showPopup('First fill in the vacancy Name field');
     } else {
       const { name, value } = e.target;
 
@@ -66,18 +68,15 @@ const CreateProject = () => {
     e.preventDefault();
     console.log('formData.name', formData.name);
     if (!formData.name) {
-      console.log('Project name required!!!');
+      console.log('Vacancy name required!!!');
     } else {
-      console.log('click form button');
-      console.log(formData); // Выводим объект в консоль
-      // createProject(formData); // POST to backend
-      projectsStore.addItem(formData);
+
+      db.addVacancy(formData);
+
     }
   };
 
-  const handleOnClick = () => {
-    createProject(formData);
-  };
+
 
   return (
     <div className={styles.container}>
@@ -85,7 +84,7 @@ const CreateProject = () => {
 
       {/* Main Content */}
       <main className={styles.main}>
-        <h2 className={styles.title}>Creating project</h2>
+        <h2 className={styles.title}>Creating vacancy</h2>
 
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.row}>
@@ -94,7 +93,7 @@ const CreateProject = () => {
               <input
                 type="text"
                 name="name"
-                placeholder="Project name"
+                placeholder="Vacancy name"
                 value={formData.name}
                 onChange={handleChange}
               />
@@ -107,7 +106,6 @@ const CreateProject = () => {
                 onChange={handleChange}
               >
                 <option value="">Select field</option>
-                
                 <option value="design">Design</option>
                 <option value="development">Development</option>
                 <option value="marketing">Marketing</option>
@@ -142,7 +140,7 @@ const CreateProject = () => {
             <textarea
               name="description"
               rows="5"
-              placeholder="Describe the project..."
+              placeholder="Describe the vacancy..."
               value={formData.description}
               onChange={handleChange}
             />
@@ -153,7 +151,7 @@ const CreateProject = () => {
             className={styles.submitButton}
             onClick={handleSubmit}
           >
-            <Link to="/">Create project </Link>
+            <Link to="/">Create vacancy </Link>
           </button>
         </form>
         {/* <Link to="/"> */}
@@ -168,4 +166,4 @@ const CreateProject = () => {
   );
 };
 
-export default CreateProject;
+export default CreateVacancy;

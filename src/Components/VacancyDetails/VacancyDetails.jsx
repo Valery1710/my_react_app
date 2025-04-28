@@ -1,43 +1,42 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import styles from './ProjectDetails.module.css';
+import { Link } from "react-router-dom";
+import styles from './VacancyDetails.module.css';
 import Menu from '../Menu/Menu';
-import ListVacanciesForProject from '../ListVacUnderProject/ListVacUnderProject';
-
 import projectsStore from '../../store/ProjectsStore';
 import projectSelected from '../../store/ProjectSelected';
 import db from '../../store/Db';
 
-const ProjectDetails = ({ id }) => {
+const VacancytDetails = ({id}) => {
   // const [field, setField] = useState(projectsStore.id);
   // const [experience, setExperience] = useState('More 2 years');
   // const [deadline, setDeadline] = useState('2024-11-22');
   // const [description, setDescription] = useState(
   //   "We are looking for a creative and detail-oriented designer to develop eye-catching and engaging visual materials for our social media platforms. The goal is to create content that aligns with our brand identity and effectively captures our audience's attention."
   // );
-  const projectForDisplay = projectsStore.items.filter(
-    (el) => el.id === db.projectSelectedId
-  );
+  const vacancyForDisplay = db.vacancies.filter(el=>el.id === db.vacancySelectedId)
   // Внимание в projectForDisplay - Array с одним элементом - объектом с данными выбранного проекта
-  const [formData, setFormData] = useState(projectForDisplay[0]);
-  console.log('formData', formData);
-  // const projectForDisplay = projectsStore.items.filter(el=>el.id === projectSelected.item)
-  //   const [formData, setFormData] = useState({
-  //     name: '',
-  //     field: '',
-  //     experience: '',
-  //     deadline: '',
-  //     description: '',
-  //     isCompleted:false
-  //   });
+    const [formData, setFormData] = useState(vacancyForDisplay[0]);
+    console.log('formData',formData)
 
-  // const handleAddVacancy = () => {
-  //   console.log('Вакансия добавлена!');
-  // };
+
+
+
+
+
+  console.log('vacancyForDisplay',vacancyForDisplay)
+  const handleAddVacancy = () => {
+    console.log('Вакансия добавлена!');
+  };
 
   const handleDeleteProject = () => {
     console.log('Проект удалён!');
-    projectsStore.removeItem(projectSelected.item);
+    projectsStore.removeItem(projectSelected.item)
+  };
+  const handleCloseVacation = () => {
+    console.log('Вакансия закрыта!');
+    console.log('db.vacancySelectedId',db.vacancySelectedId)
+    
+    db.removeVacancy(db.vacancySelectedId)
   };
 
   const handleChange = (e) => {
@@ -49,38 +48,41 @@ const ProjectDetails = ({ id }) => {
     }));
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('click Update button');
     console.log(formData); // Выводим объект в консоль
     // createProject(formData); // POST to backend
-    projectsStore.updateItem({ ...formData });
+    projectsStore.updateItem({...formData})
     // projectsStore.addItem(formData)
-  };
+    };
 
   return (
-    <>
     <div className={styles.container}>
       <Menu />
 
+
       <main className={styles.main}>
         <div className={styles.header}>
-          <h1>{formData.name || null}</h1>
-          <Link to="/">
-            <button className={styles.deleteBtn} onClick={handleDeleteProject}>
-              Delete project
-            </button>
+          <h1>{formData.name}</h1>
+          <Link to='/'>
+          <button className={styles.deleteBtn} onClick={handleCloseVacation}>
+            Close vacancy
+          </button>
           </Link>
         </div>
 
         <form className={styles.form}>
           <div className={styles.row}>
             <div className={styles.inputGroup}>
+             
               <label>Field</label>
               <select
                 name="field"
-                value={formData.field || projectForDisplay[0].field}
+                value={formData.field || vacancyForDisplay[0].field}
                 onChange={handleChange}
+                
               >
                 <option value=""></option>
                 <option value="design">Design</option>
@@ -95,9 +97,7 @@ const ProjectDetails = ({ id }) => {
                 type="text"
                 value={formData.experience}
                 // onChange={(e) => setExperience(e.target.value)}
-                onChange={(e) =>
-                  setFormData({ ...formData, experience: e.target.value })
-                }
+                onChange={(e) => setFormData({...formData, experience: e.target.value})}
               />
             </div>
 
@@ -106,9 +106,7 @@ const ProjectDetails = ({ id }) => {
               <input
                 type="date"
                 value={formData.deadline}
-                onChange={(e) =>
-                  setFormData({ ...formData, deadline: e.target.value })
-                }
+                onChange={(e) => setFormData({...formData, deadline: e.target.value})}
               />
             </div>
           </div>
@@ -117,29 +115,24 @@ const ProjectDetails = ({ id }) => {
             <label>Description</label>
             <textarea
               value={formData.description}
-              onChange={(e) =>
-                setFormData({ ...formData, description: e.target.value })
-              }
+              onChange={(e) => setFormData({...formData, description: e.target.value})}
             />
           </div>
-          <button
-            type="submit"
-            className={styles.submitButton}
-            onClick={handleSubmit}
-          >
-            <Link to="/">Update project </Link>
+          <button type="submit" className={styles.submitButton} onClick={handleSubmit} >
+            <Link to='/'>Update project </Link>
+            </button>
+          <button className={styles.addBtn} onClick={handleAddVacancy}>
+          <Link to="/createvacancy">
+            Add vacancy
+            </Link>
           </button>
-          <button className={styles.addBtn}>
-            <Link to="/createvacancy">Add vacancy</Link>
-          </button>
+                
+              
+               
         </form>
-
       </main>
-      
-      </div>
-      <ListVacanciesForProject name='test'/>
-    </>
+    </div>
   );
 };
 
-export default ProjectDetails;
+export default VacancytDetails;

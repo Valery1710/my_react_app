@@ -59,7 +59,6 @@ const ProjectDetails = ({ id }) => {
   };
 
   return (
-    <>
     <div className={styles.container}>
       <Menu />
 
@@ -135,10 +134,7 @@ const ProjectDetails = ({ id }) => {
         </form>
 
       </main>
-      
-      </div>
-      <ListVacanciesForProject name='test'/>
-    </>
+    </div>
   );
 };
 

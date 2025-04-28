@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
-import styles from './ProjectCard.module.css';
-import projectSelected from '../../store/ProjectSelected';
+import styles from './VacancyCard.module.css';
+
 import db from '../../store/Db';
 
 const getFormattedText = (input) => {
@@ -12,10 +12,10 @@ const getFormattedText = (input) => {
   return input; // Возвращаем текст без изменений
 }
 
-const ProjectCard = ({ id,title, tasks, field, deadline }) => (
-  <div className={styles.projectCard} onClick={() => db.addProjectSelectedId(id)}>
+const VacancyCard = ({ id,title, tasks, field, deadline }) => (
+  <div className={styles.projectCard} onClick={() => db.addVacancySelectedId(id)}>
   {/* <div className={styles.projectCard} onClick={() => projectSelected.addItem(id)}> */}
-    <Link to="/projectdetails" >
+    <Link to="/vacancydetails" >
     <h3>Name: {title}</h3>
     
     <p>Id: {id}</p>
@@ -28,4 +28,4 @@ const ProjectCard = ({ id,title, tasks, field, deadline }) => (
 );
 
 
-export default ProjectCard
+export default VacancyCard

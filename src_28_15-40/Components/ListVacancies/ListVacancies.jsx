@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ListProjects.module.css';
 import ProjectCard from '../ProjectCard/ProjectCard';
-// import ProjectCard from '../ProjectCard/ProjectCard_1';
+import VacancyCard from '../VacancyCard/VacancyCard';
+
 import Menu from '../Menu/Menu';
-import projectsStore from '../../store/ProjectsStore';
-import MyComponent from '../MyComponent/MyComponent';
-import img from '../../Imgs/Menu.png';
+
+import db from '../../store/Db';
+
+
 const isDateInThePast = (dateString) => {
   if (!dateString) return false; // Если дата не выбрана, возвращаем false
   const selectedDate = new Date(dateString);
@@ -18,71 +20,65 @@ const isDateInThePast = (dateString) => {
   return selectedDate < currentDate; // Сравниваем даты
 };
 
-const ListProjects = () => {
+const ListVacancies = () => {
   // const [projects, setProjects] = useState([projectsStore.items]);
 
   // projects.map((el) => {
   //   projectsStore.addItem(el);
   // });
 
-  const projectsArr = projectsStore.items;
+  // const vacanciesArr = vacancyStore.items;
+  const vacanciesArr = db.vacancies;
 
-  console.log('projectsArr', projectsArr.length);
+  
 
-  const activeProjects = projectsArr.filter(
+  const activeVacancies = vacanciesArr.filter(
     (p) => !isDateInThePast(p.deadline)
   );
-  const passedProjects = projectsArr.filter((p) => isDateInThePast(p.deadline));
-
-  // const activeProjects = projectsArr.filter((p) => !p.isCompleted);
-  // const passedProjects = projectsArr.filter((p) => p.isCompleted);
+  const passedProjects = vacanciesArr.filter((p) => isDateInThePast(p.deadline));
 
   return (
-<>
-
     <div className={styles.container}>
-
       <Menu />
 
       <main className={styles.mainContent}>
         <div className={styles.header}>
-          <h2 className={styles.title}>Active projects</h2>
-          <Link to="/createproject" className={styles.btn_link}>
-            <button className={styles.createBtn}>Create project</button>
+          <h2>Vacancies</h2>
+          <Link to="/createvacancy">
+            <button className={styles.createBtn}>Create vacation</button>
           </Link>
         </div>
         <div className={styles.projectList}>
-          {activeProjects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              title={project.name}
-              id={project.id}
-              field={project.field}
-              deadline={project.deadline}
-              isCompleted={project.isCompleted}
-              tasks={project.description || ['Sample task 1', 'Sample task 2']}
+          {activeVacancies.map((vacancy) => (
+            <VacancyCard
+              key={vacancy.id}
+              title={vacancy.name}
+              id={vacancy.id}
+              field={vacancy.field}
+              deadline={vacancy.deadline}
+              
+              tasks={vacancy.description || ['Sample task 1', 'Sample task 2']}
             />
           ))}
         </div>
 
-        <h2 className={styles.title}>Passed projects</h2>
+        <h2 className={styles.sectionTitle}>Passed projects</h2>
         <div className={styles.projectList}>
           {passedProjects.map((project) => (
-            <ProjectCard
+            <VacancyCard
               key={project.id}
               title={project.name}
               id={project.id}
               field={project.field}
               deadline={project.deadline}
               isCompleted={project.isCompleted}
-              tasks={project.description || ['Sample task 1', 'Sample task 2']}
+              tasks={project.description || ['Description']}
             />
           ))}
         </div>
       </main>
     </div>
-    </>
   );
 };
 
-export default ListProjects;
+export default ListVacancies;

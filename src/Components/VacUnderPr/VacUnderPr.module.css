@@ -1,0 +1,24 @@
+.myComponent {
+  display: flex;
+  width: 100%;
+  flex-direction: row; /* Горизонтальное расположение */
+  gap: 5%; /* Промежуток между рамками */
+  border:1px solid red;
+}
+
+.field {
+  border: 1px solid #ccc; /* Цвет и стиль рамки */
+  padding: 10px; /* Внутренний отступ */
+  border-radius: 5px; /* Закругленные углы */
+  background-color: #f9f9f9; /* Цвет фона */
+}
+
+.nameField,
+.fieldField,
+.deadlineField {
+  flex-basis: 15%; /* Ширина первых трех полей - 15% */
+}
+
+.description {
+  flex-basis: 40%; /* Ширина поля Description - 30% */
+}

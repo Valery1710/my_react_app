@@ -8,12 +8,12 @@ import CreateVacancy from './Components/CreateVacancy/CreateVacancy';
 import VacancytDetails from './Components/VacancyDetails/VacancyDetails';
 import UpdateProject from './Components/UpdateProject/UpdateProject';
 import ProjectDetails from './Components/ProjectDetails/ProjectDetails';
-import Header from './Components/Header/Header';
+
 function App() {
   return (
     <div>
-    
-<Header/>
+      Task_1 my-app 1
+
       <HashRouter>
         <Routes>
           <Route path="/" element={<ListProjects />} />

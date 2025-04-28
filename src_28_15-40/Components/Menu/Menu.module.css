@@ -1,14 +1,8 @@
 .sidebar {
   width: 200px;
-  height: 300px;
-  margin-left: 40px;
-  
-  margin-top:40px ;
-  
   background: #fff;
   padding: 20px;
- 
- 
+  border-right: 1px solid #ddd;
 }
 
 .logo {
@@ -17,38 +11,24 @@
 }
 
 .nav button {
-  font-family: Arial, Helvetica, sans-serif;
-  
   display: block;
-  width: 200px;
-  height: 50px;
+  width: 100%;
   padding: 10px;
   margin-bottom: 10px;
   background: none;
   border: none;
   text-align: left;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   color: #555;
-  font-weight: 400;
-  font-weight: 500;
-  
 }
 
 .nav button.active {
   background-color: #ddd;
   border-radius: 8px;
-  text-decoration: none;
 }
 
 button:hover {
   background-color: #ddd;
   border-radius: 8px;
-  text-decoration: none;
 }
-
-.btn_link {
-  text-decoration: none;
-  
-}
-
