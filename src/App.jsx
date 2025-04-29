@@ -3,7 +3,7 @@ import React from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import ListProjects from './Components/ListProjects/ListProjects';
 import ListVacancies from './Components/ListVacancies/ListVacancies';
-import CreateProject from './Components/CreateProject_1/CreateProject';
+import CreateProject from './Components/CreateProject/CreateProject';
 import CreateVacancy from './Components/CreateVacancy/CreateVacancy';
 import VacancytDetails from './Components/VacancyDetails/VacancyDetails';
 import UpdateProject from './Components/UpdateProject/UpdateProject';
