@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom"
 import styles from './ListProjects.module.css';
 import ProjectCard from '../ProjectCard/ProjectCard';
-// import ProjectCard from '../ProjectCard/ProjectCard_1';
 import Menu from '../Menu/Menu';
 import projectsStore from '../../store/ProjectsStore';
-import MyComponent from '../MyComponent/MyComponent';
 
 const isDateInThePast = (dateString) => {
   if (!dateString) return false; // Если дата не выбрана, возвращаем false
@@ -35,8 +33,6 @@ const ListProjects = () => {
   const activeProjects = projectsArr.filter((p) => !isDateInThePast(p.deadline));
   const passedProjects = projectsArr.filter((p) => isDateInThePast(p.deadline));
 
-  // const activeProjects = projectsArr.filter((p) => !p.isCompleted);
-  // const passedProjects = projectsArr.filter((p) => p.isCompleted);
 
   return (
     <div className={styles.container}>
@@ -44,7 +40,7 @@ const ListProjects = () => {
 
       <main className={styles.mainContent}>
         <div className={styles.header}>
-          <h2>Active projects MainPage</h2>
+          <h2 className={styles.title}>Active projects</h2>
           <Link to="/createproject" className={styles.btn_link}>
           <button className={styles.createBtn}>Create project</button>
           </Link>
@@ -63,7 +59,7 @@ const ListProjects = () => {
           ))}
         </div>
 
-        <h2 className={styles.sectionTitle}>Passed projects</h2>
+        <h2 className={styles.title}>Passed projects</h2>
         <div className={styles.projectList}>
           {passedProjects.map((project) => (
             

@@ -2,9 +2,6 @@
   display: flex;
   width: 1400px;
   height: 903px;
-  /* height: 100vh; */
-  /* background-color: #f4f5f7; */
-  border: 1px solid blue;
 }
 
 .mainContent {
