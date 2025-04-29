@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import styles from './ListProjects.module.css';
 import ProjectCard from '../ProjectCard/ProjectCard';
 import Menu from '../Menu/Menu';
-import projectsStore from '../../store/ProjectsStore';
+// import projectsStore from '../../store/ProjectsStore';
 import db from '../../store/Db';
 
 const isDateInThePast = (dateString) => {
@@ -19,14 +19,6 @@ const isDateInThePast = (dateString) => {
 
 const ListProjects = () => {
   db.update()
-  // const [projects, setProjects] = useState([projectsStore.items]);
-
-
-
-
-  // projects.map((el) => {
-  //   projectsStore.addItem(el);
-  // });
 
   const projectsArr = db.projects;
   // const projectsArr = projectsStore.items;

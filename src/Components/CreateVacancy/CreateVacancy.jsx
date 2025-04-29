@@ -75,6 +75,13 @@ const CreateVacancy = () => {
     } else {
 
       db.addVacancy(formData);
+      setFormData(({
+        name: '',
+        field: '',
+        experience: '',
+        country: '',
+        description: '',
+      }))
 
     }
   };
@@ -89,7 +96,8 @@ const CreateVacancy = () => {
       <main className={styles.main}>
         <h2 className={styles.title}>Creating vacancy</h2>
 
-        <form className={styles.form} onSubmit={handleSubmit}>
+        {/* <form className={styles.form} onSubmit={handleSubmit}> */}
+        <form className={styles.form} >
           <div className={styles.row}>
             <div className={styles.field}>
               <label>Name</label>
