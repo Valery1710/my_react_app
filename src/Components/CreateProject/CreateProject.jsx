@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect }  from 'react';
+
 import { Link } from 'react-router-dom';
 import styles from './CreateProject.module.css';
 import Menu from '../Menu/Menu';
 import projectsStore from '../../store/ProjectsStore';
 const CreateProject = () => {
+  useEffect(() => {
+    showPopup('Input project Name');
+  },[])
   const [formData, setFormData] = useState({
     name: '',
     field: '',
@@ -36,6 +40,8 @@ const CreateProject = () => {
     }
   };
   //**Sent data from Form to backend
+
+  
 
   const handleChange = (e) => {
     console.log('e.name',e.target.name)

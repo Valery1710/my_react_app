@@ -1,70 +1,131 @@
-# Getting Started with Create React App
+Описание проекта.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Приложение размещено по адресу: 
+https://valery1710.github.io/my_react_app/
 
-## Available Scripts
+Исходный код расположен по адресу:
+https://github.com/Valery1710/my_react_app.git
 
-In the project directory, you can run:
+проект запускается командами npm i и npm start в терминале редактора
+VS Code.
 
-### `npm start`
+Данное приложение представляет собой систему управления проектами и
+вакансиями, написанное с использованием языков HTML, CSS, JS и React.
+Приложение использует компоненты, которые независимо используются
+на страницах, что позволяет оптимизировать работу.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Список страниц приложения:
+1. Main Page - главная страница.
+2. Projects - страница с формой для создания проектов.
+3. Vacancies - страница с формой для создания вакансий.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Main Page - главная страница.
+Главная страница приложения представляет собой основную страницу,
+на которой представлена основная информация о текущих и завершённых
+проектах.
+В заголовке страницы указано название компании - "TROOD COMMUNITY",
+кнопки сообщений и уведомлений, и имя пользователя. В настоящее время
+эти кнопки не реализованы.
+Левая часть страницы содержит меню приложения, состоящее из
+пунктов: "Main page", "Projects", "Vacancies", "Tests" и "Settings".
+Пункт "Main page" осуществляет переадресацию на основную страницу.
+Пункт "Projects" направляет пользователя на страницу с формой
+создания проекта. Пункт Vacancies направляет пользователя на
+страницу с перечнем вакансий.
+В центральной части находятся блоки проектов, в верхней части
+центрального блока под заголовком "Active projects" - незавершённые
+проекты, под заголовком "Passed projects" - завершённые. В данной версии приложения проекты с крайним сроком исполнения ранее текущей даты считаются завершёнными.
 
-### `npm test`
+Каждый блок проекта на главной странице содержит следующие данные:
+- "Name" - название проекта.
+- "Id" - уникальный идентификатор проекта.
+- "Field" - сфера проекта.
+- "Deadline" - крайний срок выполнения.
+- "Description" - описание проекта.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Поле "Id" добавлено с целью присвоения каждому проекту его
+уникального идентификатора, так как названия проектов могут
+совпадать. Это поле присваивается автоматически при создании
+проекта.
 
-### `npm run build`
+ При нажатии на блок проекта происходит переадресация на страницу
+редактирования проекта, предоставляющую следующий функционал:
+- Изменение сферы проекта ("Field"), требуемого опыта ("Experience"),
+крайнего срока выполнения ("Deadline") и описания ("Description"). 
+Для сохранения изменений после их ввода нужно нажать кнопку
+"Update project" в нижней части страницы.
+- Удаление проекта. Для удаления проекта нужно нажать кнопку
+"Delete project" в правом верхнем углу страницы.
+- Добавление вакансий. Для добавления вакансий к проекту нужно
+нажать кнопку "Add vacancy" в нижней части экрана.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Пункт меню Projects в левой части экрана - страница с
+ формой для создания проектов. На эту же страницу ведёт 
+ кнопка "Create project" в правой верхней части Main page.
+На этой странице находится форма с полями ввода информации
+о проекте:
+- "Name" - название проекта.
+- "Field" - сфера проекта. Предлагается выбор из следующих сфер:
+"Design" - дизайн, "Development" - разработка, "Marketing" - 
+маркетинг. 
+- "Experience" - требуемый опыт.
+- "Deadline" - крайний срок выполнения проекта. Формат ввода
+даты: дд.мм.гггг.
+- "Description" - описание проекта.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Поле "Name" является обязательным для заполнения, если оно не
+заполнено, то при заполнении других полей появится сообщение
+"Please fill in the project name field". Остальные поля не являются
+обязательными, проект можно сохранить без их заполнения.
+Для сохранения проекта нужно нажать кнопку "Create project"
+в нижней части формы.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+3. Vacancies - страница с формой для создания вакансий.
+Форма содержит следующие поля ввода:
+- "Name" - название вакансии.
+- "Field" - сфера вакансии. Предлагается выбор из следующих сфер:
+"Design" - дизайн, "Development" - разработка, "Marketing" -
+маркетинг.
+- "Experience" - требуемый опыт.
+- "Country" - название страны.
+- "Description" - описание вакансии.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+На эту страницу можно попасть, нажав кнопку "Add vacancy" на странице 
+с детальной информацией о проекте или нажав кнопку "Add vacancy"
+в правом верхнем углу страницы с перечнем вакансий. В первом случае
+id созданной вакансии сохраняется в выбранном проекте.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Поле "Name" является обязательным для заполнения, если оно не
+заполнено, то при заполнении других полей появится сообщение
+"Please fill in the project name field". Остальные поля не являются
+обязательными, вакансию можно сохранить без их заполнения.
+Для сохранения вакансии нужно нажать кнопку "Create vacancy"
+в нижней части формы.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Техническая часть.
 
-## Learn More
+Страница сделана на основе React-компонентов. 
+Данные:
+- массив с объектами проектов.
+- массив с объектами вакансий.
+- переменная const - выбранный проект.
+- переменная const - выбранная вакансия.
+- в проекте данные хранятся в классах Mobx store.
+- данные сохраняются в Local Storage.
+- в настоящий момент backend не используется.
+В компонентах есть закомментированные модули для обращения к
+backend.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Дальнейшие предложения для доработки:
 
-### Code Splitting
+- выводить на странице с детальной информацией о проекте
+перечень относящихся к этому проекту вакансий.
+- подключить backend.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

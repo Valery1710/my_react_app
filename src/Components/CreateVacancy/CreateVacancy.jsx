@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './CreateProject.module.css';
 import Menu from '../Menu/Menu';
@@ -6,11 +6,14 @@ import vacancyStore from '../../store/Db';
 import db from '../../store/Db';
 
 const CreateVacancy = () => {
+    useEffect(() => {
+      showPopup('Input vacancy Name');
+    },[])
   const [formData, setFormData] = useState({
     name: '',
     field: '',
     experience: '',
-    deadline: '',
+    country: '',
     description: '',
   });
   const [errorMessage, setErrorMessage] = useState('');
@@ -125,11 +128,11 @@ const CreateVacancy = () => {
               />
             </div>
             <div className={styles.field}>
-              <label>Deadline</label>
+              <label>Country</label>
               <input
-                type="date"
-                name="deadline"
-                value={formData.deadline}
+                type="text"
+                name="country"
+                value={formData.country}
                 onChange={handleChange}
               />
             </div>
