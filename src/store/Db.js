@@ -55,8 +55,8 @@ class Db {
   }
 
   updateVacancy(vacancy) {
-    this.removeVacancy(vacancy)
-    this.addVacancy()
+    this.removeVacancy(vacancy.id)
+    this.addVacancy(vacancy)
   }
 
   addProjectSelectedId(id) {

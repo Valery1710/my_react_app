@@ -12,7 +12,7 @@ const getFormattedText = (input) => {
   return input; // Возвращаем текст без изменений
 }
 
-const VacancyCard = ({ id,title, tasks, field, deadline }) => (
+const VacancyCard = ({ id,title, tasks, field, country }) => (
   <div className={styles.projectCard} onClick={() => db.addVacancySelectedId(id)}>
   {/* <div className={styles.projectCard} onClick={() => projectSelected.addItem(id)}> */}
     <Link to="/vacancydetails" >
@@ -20,7 +20,7 @@ const VacancyCard = ({ id,title, tasks, field, deadline }) => (
     
     <p>Id: {id}</p>
     <p>Field: {field}</p>
-    <p>Deadline: {deadline}</p>
+    <p>Country: {country}</p>
     <p>Description: {getFormattedText(tasks)}</p>
     
     </Link>

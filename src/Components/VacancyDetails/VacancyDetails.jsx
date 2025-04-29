@@ -54,7 +54,8 @@ const VacancytDetails = ({id}) => {
     console.log('click Update button');
     console.log(formData); // Выводим объект в консоль
     // createProject(formData); // POST to backend
-    projectsStore.updateItem({...formData})
+    db.updateVacancy({...formData})
+    // projectsStore.updateItem({...formData})
     // projectsStore.addItem(formData)
     };
 
@@ -102,11 +103,11 @@ const VacancytDetails = ({id}) => {
             </div>
 
             <div className={styles.inputGroup}>
-              <label>Deadline</label>
+              <label>Country</label>
               <input
-                type="date"
-                value={formData.deadline}
-                onChange={(e) => setFormData({...formData, deadline: e.target.value})}
+                type="text"
+                value={formData.country}
+                onChange={(e) => setFormData({...formData, country: e.target.value})}
               />
             </div>
           </div>
@@ -119,16 +120,8 @@ const VacancytDetails = ({id}) => {
             />
           </div>
           <button type="submit" className={styles.submitButton} onClick={handleSubmit} >
-            <Link to='/'>Update project </Link>
+            <Link to='/'>Update vacancy </Link>
             </button>
-          <button className={styles.addBtn} onClick={handleAddVacancy}>
-          <Link to="/createvacancy">
-            Add vacancy
-            </Link>
-          </button>
-                
-              
-               
         </form>
       </main>
     </div>

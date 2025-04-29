@@ -55,7 +55,7 @@ const ListVacancies = () => {
               title={vacancy.name}
               id={vacancy.id}
               field={vacancy.field}
-              deadline={vacancy.deadline}
+              country={vacancy.country}
               
               tasks={vacancy.description || ['Sample task 1', 'Sample task 2']}
             />
