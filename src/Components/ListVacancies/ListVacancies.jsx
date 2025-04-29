@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './ListProjects.module.css';
-import ProjectCard from '../ProjectCard/ProjectCard';
+import styles from './ListVacancies.module.css';
 import VacancyCard from '../VacancyCard/VacancyCard';
 
 import Menu from '../Menu/Menu';
@@ -62,20 +61,7 @@ const ListVacancies = () => {
           ))}
         </div>
 
-        <h2 className={styles.sectionTitle}>Passed projects</h2>
-        <div className={styles.projectList}>
-          {passedProjects.map((project) => (
-            <VacancyCard
-              key={project.id}
-              title={project.name}
-              id={project.id}
-              field={project.field}
-              deadline={project.deadline}
-              isCompleted={project.isCompleted}
-              tasks={project.description || ['Description']}
-            />
-          ))}
-        </div>
+
       </main>
     </div>
   );
