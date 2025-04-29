@@ -7,7 +7,7 @@
   width: 1400px;
     display: flex;
     font-family: sans-serif;
-    border: 1px solid red;
+  
   }
   
   .sidebar {
@@ -40,7 +40,7 @@
   .main {
     flex: 1;
     padding: 40px;
-    border: 1px solid rebeccapurple;
+    
     background-color: #f3f4f6;
     border-top-left-radius: 24px;
   }
