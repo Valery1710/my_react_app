@@ -67,11 +67,11 @@ const VacancytDetails = ({id}) => {
       <main className={styles.main}>
         <div className={styles.header}>
           <h1>{formData.name}</h1>
-          <Link to='/'>
+         
           <button className={styles.deleteBtn} onClick={handleCloseVacation}>
-            Close vacancy
+          <Link to='/listvacancies'>  Close vacancy </Link>
           </button>
-          </Link>
+          
         </div>
 
         <form className={styles.form}>
@@ -120,7 +120,7 @@ const VacancytDetails = ({id}) => {
             />
           </div>
           <button type="submit" className={styles.submitButton} onClick={handleSubmit} >
-            <Link to='/'>Update vacancy </Link>
+            <Link to='/listvacancies'>Update vacancy </Link>
             </button>
         </form>
       </main>

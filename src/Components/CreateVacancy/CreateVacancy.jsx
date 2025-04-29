@@ -154,7 +154,7 @@ const CreateVacancy = () => {
             className={styles.submitButton}
             onClick={handleSubmit}
           >
-            <Link to="/">Create vacancy </Link>
+            <Link to="/listvacancies">Create vacancy </Link>
           </button>
         </form>
         {/* <Link to="/"> */}
