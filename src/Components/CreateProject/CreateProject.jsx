@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styles from './CreateProject.module.css';
 import Menu from '../Menu/Menu';
 import projectsStore from '../../store/ProjectsStore';
+import db from '../../store/Db'
 const CreateProject = () => {
   useEffect(() => {
     showPopup('Input project Name');
@@ -77,6 +78,7 @@ const CreateProject = () => {
       console.log('click form button');
       console.log(formData); // Выводим объект в консоль
       // createProject(formData); // POST to backend
+      // db.add(formData);
       projectsStore.addItem(formData);
     }
   };

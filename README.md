@@ -1,131 +1,156 @@
-Описание проекта.
-
-Приложение размещено по адресу: 
+Project Description
+Application is deployed at:
 https://valery1710.github.io/my_react_app/
 
-Исходный код расположен по адресу:
+Source code is available at:
 https://github.com/Valery1710/my_react_app.git
 
-проект запускается командами npm i и npm start в терминале редактора
-VS Code.
+The project can be launched using the commands npm i and npm start in the terminal of the VS Code editor.
 
-Данное приложение представляет собой систему управления проектами и
-вакансиями, написанное с использованием языков HTML, CSS, JS и React.
-Приложение использует компоненты, которые независимо используются
-на страницах, что позволяет оптимизировать работу.
+This application is a project and vacancy management system developed using HTML, CSS, JavaScript, and React.
+The app uses modular components, each of which functions independently across pages,
+helping to optimize performance.
 
-Список страниц приложения:
-1. Main Page - главная страница.
-2. Projects - страница с формой для создания проектов.
-3. Vacancies - страница с формой для создания вакансий.
+Application Pages Overview
+Main Page – the home page.
 
-1. Main Page - главная страница.
-Главная страница приложения представляет собой основную страницу,
-на которой представлена основная информация о текущих и завершённых
-проектах.
-В заголовке страницы указано название компании - "TROOD COMMUNITY",
-кнопки сообщений и уведомлений, и имя пользователя. В настоящее время
-эти кнопки не реализованы.
-Левая часть страницы содержит меню приложения, состоящее из
-пунктов: "Main page", "Projects", "Vacancies", "Tests" и "Settings".
-Пункт "Main page" осуществляет переадресацию на основную страницу.
-Пункт "Projects" направляет пользователя на страницу с формой
-создания проекта. Пункт Vacancies направляет пользователя на
-страницу с перечнем вакансий.
-В центральной части находятся блоки проектов, в верхней части
-центрального блока под заголовком "Active projects" - незавершённые
-проекты, под заголовком "Passed projects" - завершённые. В данной версии приложения проекты с крайним сроком исполнения ранее текущей даты считаются завершёнными.
+Projects – a page with a form to create new projects.
 
-Каждый блок проекта на главной странице содержит следующие данные:
-- "Name" - название проекта.
-- "Id" - уникальный идентификатор проекта.
-- "Field" - сфера проекта.
-- "Deadline" - крайний срок выполнения.
-- "Description" - описание проекта.
+Vacancies – a page with a form to create job vacancies.
 
-Поле "Id" добавлено с целью присвоения каждому проекту его
-уникального идентификатора, так как названия проектов могут
-совпадать. Это поле присваивается автоматически при создании
-проекта.
+1. Main Page
+The main page serves as the application's homepage and provides key information
+about ongoing and completed projects.
 
- При нажатии на блок проекта происходит переадресация на страницу
-редактирования проекта, предоставляющую следующий функционал:
-- Изменение сферы проекта ("Field"), требуемого опыта ("Experience"),
-крайнего срока выполнения ("Deadline") и описания ("Description"). 
-Для сохранения изменений после их ввода нужно нажать кнопку
-"Update project" в нижней части страницы.
-- Удаление проекта. Для удаления проекта нужно нажать кнопку
-"Delete project" в правом верхнем углу страницы.
-- Добавление вакансий. Для добавления вакансий к проекту нужно
-нажать кнопку "Add vacancy" в нижней части экрана.
+At the top, the header displays the company name "TROOD COMMUNITY", message and notification icons, 
+and the username. Currently, the message and notification buttons are non-functional.
 
-2. Пункт меню Projects в левой части экрана - страница с
- формой для создания проектов. На эту же страницу ведёт 
- кнопка "Create project" в правой верхней части Main page.
-На этой странице находится форма с полями ввода информации
-о проекте:
-- "Name" - название проекта.
-- "Field" - сфера проекта. Предлагается выбор из следующих сфер:
-"Design" - дизайн, "Development" - разработка, "Marketing" - 
-маркетинг. 
-- "Experience" - требуемый опыт.
-- "Deadline" - крайний срок выполнения проекта. Формат ввода
-даты: дд.мм.гггг.
-- "Description" - описание проекта.
+On the left side, there’s a navigation menu with the following items:
 
-Поле "Name" является обязательным для заполнения, если оно не
-заполнено, то при заполнении других полей появится сообщение
-"Please fill in the project name field". Остальные поля не являются
-обязательными, проект можно сохранить без их заполнения.
-Для сохранения проекта нужно нажать кнопку "Create project"
-в нижней части формы.
+Main page – redirects to the homepage.
 
+Projects – leads to the project creation page.
 
-3. Vacancies - страница с формой для создания вакансий.
-Форма содержит следующие поля ввода:
-- "Name" - название вакансии.
-- "Field" - сфера вакансии. Предлагается выбор из следующих сфер:
-"Design" - дизайн, "Development" - разработка, "Marketing" -
-маркетинг.
-- "Experience" - требуемый опыт.
-- "Country" - название страны.
-- "Description" - описание вакансии.
+Vacancies – navigates to the vacancy list page.
 
-На эту страницу можно попасть, нажав кнопку "Add vacancy" на странице 
-с детальной информацией о проекте или нажав кнопку "Add vacancy"
-в правом верхнем углу страницы с перечнем вакансий. В первом случае
-id созданной вакансии сохраняется в выбранном проекте.
+Tests and Settings – currently listed without additional functionality.
 
-Поле "Name" является обязательным для заполнения, если оно не
-заполнено, то при заполнении других полей появится сообщение
-"Please fill in the project name field". Остальные поля не являются
-обязательными, вакансию можно сохранить без их заполнения.
-Для сохранения вакансии нужно нажать кнопку "Create vacancy"
-в нижней части формы.
+The central area displays project blocks:
 
+Projects under "Active projects" are ongoing.
 
-Техническая часть.
+Projects under "Passed projects" are considered completed (if their deadline 
+is earlier than the current date).
 
-Страница сделана на основе React-компонентов. 
-Данные:
-- массив с объектами проектов.
-- массив с объектами вакансий.
-- переменная const - выбранный проект.
-- переменная const - выбранная вакансия.
-- в проекте данные хранятся в классах Mobx store.
-- данные сохраняются в Local Storage.
-- в настоящий момент backend не используется.
-В компонентах есть закомментированные модули для обращения к
-backend.
+Each project block contains:
 
+Name – project title.
 
-Дальнейшие предложения для доработки:
+Id – unique project identifier.
 
-- выводить на странице с детальной информацией о проекте
-перечень относящихся к этому проекту вакансий.
-- подключить backend.
+Field – project field.
 
+Deadline – project due date.
 
+Description – project description.
 
+The "Id" field ensures unique identification, since project names may be duplicated. 
+It is automatically assigned upon creation.
 
+Clicking on a project block redirects the user to the project editing page, 
+where the following features are available:
 
+Modify the Field, Experience, Deadline, and Description.
+
+Click the "Update project" button at the bottom to save changes.
+
+Click the "Delete project" button in the top right corner to delete the project.
+
+Click the "Add vacancy" button at the bottom to associate new vacancies with the project.
+
+2. Projects Page
+Accessed via the "Projects" menu item or the "Create project" button in the top right corner of the Main Page.
+
+This page contains a form to create a new project with the following input fields:
+
+Name – project name.
+
+Field – project field, selectable from:
+
+"Design"
+
+"Development"
+
+"Marketing"
+
+Experience – required experience.
+
+Deadline – project deadline (format: dd.mm.yyyy).
+
+Description – project description.
+
+The "Name" field is mandatory. If left empty, an alert will appear:
+"Please fill in the project name field".
+Other fields are optional — a project can be saved without filling them in.
+
+Click the "Create project" button at the bottom of the form to save the project.
+
+3. Vacancies Page
+This page contains a form to create a new job vacancy with the following input fields:
+
+Name – vacancy title.
+
+Field – vacancy field, selectable from:
+
+"Design"
+
+"Development"
+
+"Marketing"
+
+Experience – required experience.
+
+Country – country name.
+
+Description – vacancy description.
+
+You can access this page by clicking the "Add vacancy" button either:
+
+on the project detail page (which will associate the new vacancy with the selected project), or
+
+in the top right corner of the Vacancies page.
+
+The "Name" field is mandatory. If left empty, an alert will appear:
+"Please fill in the project name field".
+All other fields are optional — a vacancy can be saved without them.
+
+Click the "Create vacancy" button at the bottom of the form to save the vacancy.
+
+Technical Details
+The application is built using React components.
+
+Data includes:
+
+ - array of project objects.
+
+ - array of vacancy objects.
+
+ - const variable for the selected project.
+
+ - const variable for the selected vacancy.
+
+Data handling:
+
+ - Data is stored using MobX stores.
+
+ - Data is saved in Local Storage.
+
+ - Currently, no backend is used.
+
+ - There are commented-out modules in the code prepared for backend integration.
+
+Suggestions for Future Improvements
+- Display a list of vacancies related to a project on its detailed page.
+
+- Integrate a backend system.
+- Add tooltip hints. For example, when hovering over a project card, suggest that the user view detailed project information.

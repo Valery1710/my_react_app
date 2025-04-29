@@ -14,8 +14,18 @@ class Db {
     makeAutoObservable(this);
   }
 
+addProject(item) {
+  this.items = JSON.parse(localStorage.getItem('projectStore')) ? JSON.parse(localStorage.getItem('projectStore')) : [];
+  if (!this.items.some((el) => el.id === item.id)) {
+    const newProject = { id: Date.now(), vacancies:[],...item};
+    this.items.push(newProject);
+    localStorage.setItem('projectStore', JSON.stringify(this.items));
+  }
+}
+
+
   addVacancy(vacancy) {
-    console.log('addItem')
+  
     this.vacancies = JSON.parse(localStorage.getItem('vacanciesStore')) ? JSON.parse(localStorage.getItem('vacanciesStore')) : [];
 
     if (this.vacancies.some((el) => el.id === vacancy.id)) //проверка уникальности id вакансии
