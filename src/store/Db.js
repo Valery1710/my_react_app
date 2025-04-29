@@ -3,9 +3,12 @@ import { makeAutoObservable } from 'mobx';
 class Db {
    //массив объектов в каждом объекте одтельный проект
   vacancies = JSON.parse(localStorage.getItem('vacanciesStore')) ? JSON.parse(localStorage.getItem('vacanciesStore')) : [];
+  
   projects = JSON.parse(localStorage.getItem('projectStore')) ? JSON.parse(localStorage.getItem('projectStore')) : [];
+  
   projectSelectedId =  JSON.parse(localStorage.getItem('projectSelected')) ?
   JSON.parse(localStorage.getItem('projectSelected')) : null
+  
   vacancySelectedId =  JSON.parse(localStorage.getItem('vacancySelected')) ?
   JSON.parse(localStorage.getItem('vacancySelected')) : null
 
@@ -13,6 +16,19 @@ class Db {
   constructor() {
     makeAutoObservable(this);
   }
+
+update() {
+  this.vacancies = JSON.parse(localStorage.getItem('vacanciesStore')) ? JSON.parse(localStorage.getItem('vacanciesStore')) : [];
+  
+  this.projects = JSON.parse(localStorage.getItem('projectStore')) ? JSON.parse(localStorage.getItem('projectStore')) : [];
+  
+  this.projectSelectedId =  JSON.parse(localStorage.getItem('projectSelected')) ?
+  JSON.parse(localStorage.getItem('projectSelected')) : null
+  
+  this.vacancySelectedId =  JSON.parse(localStorage.getItem('vacancySelected')) ?
+  JSON.parse(localStorage.getItem('vacancySelected')) : null
+
+}
 
 addProject(item) {
   this.items = JSON.parse(localStorage.getItem('projectStore')) ? JSON.parse(localStorage.getItem('projectStore')) : [];
@@ -23,6 +39,16 @@ addProject(item) {
   }
 }
 
+removeProject(projectId) {
+  this.projects = JSON.parse(localStorage.getItem('projectsStore'));
+  this.projects = this.projects.filter((el) => el.id !== projectId);
+  localStorage.setItem('projectsStore', JSON.stringify(this.projects));
+}
+
+updateProject(project) {
+  this.removeProject(project.id)
+  this.addProject(project)
+}
 
   addVacancy(vacancy) {
   
@@ -64,10 +90,15 @@ addProject(item) {
     localStorage.setItem('vacanciesStore', JSON.stringify(this.vacancies));
   }
 
+
+  
+
   updateVacancy(vacancy) {
     this.removeVacancy(vacancy.id)
     this.addVacancy(vacancy)
   }
+
+
 
   addProjectSelectedId(id) {
     

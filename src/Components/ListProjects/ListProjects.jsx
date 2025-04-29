@@ -4,6 +4,7 @@ import styles from './ListProjects.module.css';
 import ProjectCard from '../ProjectCard/ProjectCard';
 import Menu from '../Menu/Menu';
 import projectsStore from '../../store/ProjectsStore';
+import db from '../../store/Db';
 
 const isDateInThePast = (dateString) => {
   if (!dateString) return false; // Если дата не выбрана, возвращаем false
@@ -17,6 +18,7 @@ const isDateInThePast = (dateString) => {
 };
 
 const ListProjects = () => {
+  db.update()
   // const [projects, setProjects] = useState([projectsStore.items]);
 
 
@@ -26,7 +28,8 @@ const ListProjects = () => {
   //   projectsStore.addItem(el);
   // });
 
-  const projectsArr = projectsStore.items;
+  const projectsArr = db.projects;
+  // const projectsArr = projectsStore.items;
 
   console.log('projectsArr', projectsArr.length);
 

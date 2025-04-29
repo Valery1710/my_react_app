@@ -43,14 +43,12 @@ const CreateProject = () => {
   //**Sent data from Form to backend
 
   
-
+//add value from field to formData object
   const handleChange = (e) => {
-    console.log('e.name',e.target.name)
     if (!formData.name && e.target.name !== "name") {
       showPopup('First fill in the project Name field');
     } else {
       const { name, value } = e.target;
-
       setFormData((prev) => ({
         ...prev,
         [name]: value,
@@ -66,20 +64,20 @@ const CreateProject = () => {
     setTimeout(() => {
       setIsPopupVisible(false);
       console.log('Stop popup');
-    }, 3000); // Скрыть попап через 2 секунды
+    }, 3000); // Close popup after 3 seconds
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('formData.name', formData.name);
+  // name is required
     if (!formData.name) {
       console.log('Project name required!!!');
     } else {
-      console.log('click form button');
-      console.log(formData); // Выводим объект в консоль
-      // createProject(formData); // POST to backend
-      // db.add(formData);
-      projectsStore.addItem(formData);
+ //POST to backend
+      // createProject(formData); // uncomment if backend available
+   
+      db.addProject(formData);
+      // projectsStore.addItem(formData);
     }
   };
 

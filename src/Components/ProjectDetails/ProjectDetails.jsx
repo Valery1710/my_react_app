@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './ProjectDetails.module.css';
 import Menu from '../Menu/Menu';
@@ -15,7 +15,10 @@ const ProjectDetails = ({ id }) => {
   // const [description, setDescription] = useState(
   //   "We are looking for a creative and detail-oriented designer to develop eye-catching and engaging visual materials for our social media platforms. The goal is to create content that aligns with our brand identity and effectively captures our audience's attention."
   // );
-  const projectForDisplay = projectsStore.items.filter(
+  db.update()
+
+  // const projectForDisplay = projectsStore.items.filter(
+  const projectForDisplay = db.projects.filter(
     (el) => el.id === db.projectSelectedId
   );
   // Внимание в projectForDisplay - Array с одним элементом - объектом с данными выбранного проекта
@@ -31,13 +34,12 @@ const ProjectDetails = ({ id }) => {
   //     isCompleted:false
   //   });
 
-  // const handleAddVacancy = () => {
-  //   console.log('Вакансия добавлена!');
-  // };
+
 
   const handleDeleteProject = () => {
-    console.log('Проект удалён!');
+   
     projectsStore.removeItem(projectSelected.item);
+    // projectsStore.removeItem(projectSelected.item);
   };
 
   const handleChange = (e) => {

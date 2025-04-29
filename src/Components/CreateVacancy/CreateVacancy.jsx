@@ -157,11 +157,7 @@ const CreateVacancy = () => {
             <Link to="/listvacancies">Create vacancy </Link>
           </button>
         </form>
-        {/* <Link to="/"> */}
-        {/* <button type="submit" className={handleOnClick}>
-              Create project
-            </button> */}
-        {/* </Link> */}
+ 
       </main>
 
       {isPopupVisible && <div className={styles.popup}>{errorMessage}</div>}
