@@ -45,7 +45,7 @@ const ListProjects = () => {
       <main className={styles.mainContent}>
         <div className={styles.header}>
           <h2>Active projects MainPage</h2>
-          <Link to="/createproject">
+          <Link to="/createproject" className={styles.btn_link}>
           <button className={styles.createBtn}>Create project</button>
           </Link>
         </div>
