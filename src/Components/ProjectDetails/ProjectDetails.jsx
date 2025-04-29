@@ -137,7 +137,7 @@ const ProjectDetails = ({ id }) => {
       </main>
       
       </div>
-      <ListVacanciesForProject name='test'/>
+      {/* <ListVacanciesForProject name='test'/> */}
     </>
   );
 };
