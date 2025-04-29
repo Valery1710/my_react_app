@@ -1,3 +1,6 @@
+* {
+  text-decoration: none;
+}
 .sidebar {
   width: 200px;
   height: 300px;
@@ -47,8 +50,5 @@ button:hover {
   text-decoration: none;
 }
 
-.btn_link {
-  text-decoration: none;
-  
-}
+
 

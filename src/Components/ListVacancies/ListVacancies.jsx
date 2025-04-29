@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import styles from './ListVacancies.module.css';
+import styles from './ListProjects.module.css';
+// import styles from './ListVacancies.module.css';
 import VacancyCard from '../VacancyCard/VacancyCard';
 
 import Menu from '../Menu/Menu';
@@ -42,8 +43,8 @@ const ListVacancies = () => {
 
       <main className={styles.mainContent}>
         <div className={styles.header}>
-          <h2>Vacancies</h2>
-          <Link to="/createvacancy">
+          <h2 className={styles.title}>Vacancies</h2>
+          <Link to="/createvacancy" className={styles.btn_link}>
             <button className={styles.createBtn}>Create vacation</button>
           </Link>
         </div>

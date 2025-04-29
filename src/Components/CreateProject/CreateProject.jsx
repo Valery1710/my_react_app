@@ -150,10 +150,11 @@ const CreateProject = () => {
 
           <button
             type="submit"
-            className={styles.submitButton}
+            // className={styles.submitButton}
+            className={styles.createBtn}
             onClick={handleSubmit}
           >
-            <Link to="/" className={styles.link}>Create project </Link>
+            <Link to="/" className={styles.btn_link}>Create project </Link>
           </button>
         </form>
         {/* <Link to="/"> */}
